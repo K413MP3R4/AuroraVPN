@@ -1,0 +1,37 @@
+﻿# Compiled output
+dist/
+build/
+*.exe
+*.spec
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+*.egg
+.venv/
+venv/
+env/
+
+# Runtime config (generated at runtime, not source)
+*.json
+!config_examples/*.conf
+!config_examples/*.ovpn
+
+# Logs
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+*.suo
+*.user
+
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini

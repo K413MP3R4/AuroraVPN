@@ -1,0 +1,51 @@
+name: Tests
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: pytest (${{ matrix.os }}, Python ${{ matrix.python-version }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ["3.10", "3.11", "3.12"]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+
+      - name: Install dependencies (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgl1
+          python -m pip install --upgrade pip
+          python -m pip install pytest
+          # Pas customtkinter sur le runner Linux headless (UI non testee
+          # dans la CI ; seul le code metier est couvert par pytest)
+
+      - name: Install dependencies (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pytest
+
+      - name: Run tests
+        run: |
+          python -m pytest tests/ -v --tb=short \
+            --ignore=tests/test_i18n.py
+        # test_i18n.py charge le module i18n qui essaie d'auto-detecter
+        # la langue systeme ; pas critique en CI.

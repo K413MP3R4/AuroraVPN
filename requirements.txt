@@ -1,0 +1,20 @@
+# =====================================================================
+#  AuroraVPN - Dependances Python (v3 + tests)
+#  Compatible Windows 10 / 11, Python 3.10+
+# =====================================================================
+
+# Interface graphique moderne (theme sombre)
+customtkinter>=5.2.2
+
+# Icone d'app + system tray
+Pillow>=10.0.0
+pystray>=0.19.5
+
+# Notifications systeme (toasts Windows)
+plyer>=2.1.0
+
+# Tests unitaires (optionnel pour l'utilisateur final)
+pytest>=7.0.0
+
+# Packaging en .exe Windows
+pyinstaller>=6.6.0
