@@ -7,7 +7,7 @@
 customtkinter>=5.2.2
 
 # Icone d'app + system tray
-Pillow>=10.0.0
+Pillow>=12.2.0
 pystray>=0.19.5
 
 # Notifications systeme (toasts Windows)
