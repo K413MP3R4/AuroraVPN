@@ -14,7 +14,7 @@ pystray>=0.19.5
 plyer>=2.1.0
 
 # Tests unitaires (optionnel pour l'utilisateur final)
-pytest>=7.0.0
+pytest>=9.1.1
 
 # Packaging en .exe Windows
 pyinstaller>=6.6.0
