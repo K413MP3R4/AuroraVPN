@@ -4,7 +4,7 @@
 # =====================================================================
 
 # Interface graphique moderne (theme sombre)
-customtkinter>=5.2.2
+customtkinter>=6.0.0
 
 # Icone d'app + system tray
 Pillow>=10.0.0
